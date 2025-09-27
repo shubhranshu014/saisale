@@ -492,7 +492,8 @@
                             <div class="collapse" id="ordersMenu">
                                 <ul class="nav flex-column ms-4 mt-1 mb-0">
                                     <li class="nav-item"><a class="nav-link py-1" href="#">Create Order</a></li>
-                                    <li class="nav-item"><a class="nav-link py-1" href="{{ route('orders.index') }}">Order List <span
+                                    <li class="nav-item"><a class="nav-link py-1"
+                                            href="{{ route('orders.index') }}">Order List <span
                                                 class="badge bg-warning ms-1">0 Pending</span></a></li>
                                     <li class="nav-item"><a class="nav-link py-1" href="#">Invoices</a></li>
                                 </ul>
@@ -522,10 +523,10 @@
                                         <div class="collapse" id="PartyLedgerMenu">
                                             <ul class="nav flex-column ms-2 mt-1">
                                                 <li class="nav-item"><a class="nav-link py-1"
-                                                        href="{{ route('customers.index')}}">Fabricater details</a>
+                                                        href="{{ route('customers.index') }}">Fabricater details</a>
                                                 </li>
                                                 <li class="nav-item"><a class="nav-link py-1"
-                                                        href="{{ route('list.suppilers')}}">Supplier details</a></li>
+                                                        href="{{ route('list.suppilers') }}">Supplier details</a></li>
                                             </ul>
                                         </div>
                                     </li>
@@ -537,7 +538,7 @@
                                         </a>
                                         <div class="collapse" id="TransactionsMenu">
                                             <ul class="nav flex-column ms-2 mt-1">
-                                                 <li class="nav-item"><a class="nav-link py-1"
+                                                <li class="nav-item"><a class="nav-link py-1"
                                                         href="{{ route('banks.index') }}">Bank</a>
                                                 </li>
                                                 <li class="nav-item"><a class="nav-link py-1"
@@ -572,7 +573,8 @@
                             <div class="collapse" id="crmMenu">
                                 <ul class="nav flex-column ms-4 mt-1 mb-0">
                                     <li class="nav-item"><a class="nav-link py-1" href="#">Customers</a></li>
-                                    <li class="nav-item"><a class="nav-link py-1" href="{{ route('lead.fatch.web') }}">Leads</a></li>
+                                    <li class="nav-item"><a class="nav-link py-1"
+                                            href="{{ route('lead.fatch.web') }}">Leads</a></li>
                                     <li class="nav-item"><a class="nav-link py-1" href="#">Follow-ups</a></li>
                                 </ul>
                             </div>
@@ -592,14 +594,44 @@
                             </a>
                             <div class="collapse" id="hrMenu">
                                 <ul class="nav flex-column ms-4 mt-1 mb-0">
-                                    <li class="nav-item"><a class="nav-link py-1" href="#">Employees</a></li>
+                                    <li class="nav-item"><a class="nav-link py-1"
+                                            href="{{ route('list.employee.details') }}">Employees</a></li>
                                     <li class="nav-item"><a class="nav-link py-1" href="#">Attendance</a></li>
                                     <li class="nav-item"><a class="nav-link py-1" href="#">Payroll</a></li>
-                                    <li class="nav-item"><a class="nav-link py-1" href="#">Leave Requests</a></li>
+                                    <li class="nav-item"><a class="nav-link py-1"
+                                            href="{{ route('holiday.create') }}">Add Holidays</a></li>
+                                    <li class="nav-item"><a class="nav-link py-1"
+                                            href="{{ route('holiday.list') }}">Holidays</a>
+                                    </li>
+                                    <li class="nav-item"><a class="nav-link py-1"
+                                            href="{{ route('leave.request.list') }}">Leave
+                                            Requests</a></li>
                                 </ul>
                             </div>
                         </li>
                     @endrole
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center justify-content-between"
+                            data-bs-toggle="collapse" href="#leaveMenu">
+                            <span class="d-flex align-items-center">
+                                <i class="bi bi-person-badge fs-5 me-2"></i>
+                                <span class="menu-title fw-semibold">Leaves</span>
+                            </span>
+                            <i class="bi bi-chevron-down"></i>
+                        </a>
+                        <div class="collapse" id="leaveMenu">
+                            <ul class="nav flex-column ms-4 mt-1 mb-0">
+                                <li class="nav-item"><a class="nav-link py-1"
+                                        href="{{ route('holiday.list') }}">Holidays</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link py-1"
+                                        href="{{ route('apply.leave.request') }}">Apply Leave</a></li>
+                                <li class="nav-item"><a class="nav-link py-1"
+                                        href="{{ route('leave.request.list') }}">Leave
+                                        Requests</a></li>
+                            </ul>
+                        </div>
+                    </li>
                     @role('admin')
                         <li class="nav-item">
                             <a class="nav-link d-flex align-items-center justify-content-between"
@@ -612,6 +644,9 @@
                             </a>
                             <div class="collapse" id="usermenu">
                                 <ul class="nav flex-column ms-4 mt-1 mb-0">
+                                    <li class="nav-item">
+                                        <a class="nav-link py-1" href="{{ route('list.user') }}">User</a>
+                                    </li>
                                     <li class="nav-item">
                                         <a class="nav-link py-1" href="{{ route('roles.index') }}">Roles</a>
                                     </li>
