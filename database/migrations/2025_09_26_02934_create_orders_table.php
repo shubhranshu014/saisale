@@ -18,12 +18,13 @@ return new class extends Migration
                 ->references('id')
                 ->on('leads')
                 ->onDelete('cascade');
-                  $table->unsignedBigInteger('productId');
-                  $table->foreign('productId')
+            $table->unsignedBigInteger('productId');
+            $table->foreign('productId')
                 ->references('id')
                 ->on('products')
                 ->onDelete('cascade');
             $table->integer('qty');
+            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->timestamps();
         });
     }

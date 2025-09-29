@@ -3,8 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Faker\Factory as Faker;
+use App\Models\Order;
 use App\Models\Lead;
 use App\Models\Product;
 
@@ -12,24 +11,26 @@ class OrderSeeder extends Seeder
 {
     public function run()
     {
-        $faker = Faker::create();
+        $leads = Lead::all();
+        $products = Product::all();
 
-        $leadIds = Lead::pluck('id');
-        $productIds = Product::pluck('id');
-
-        if ($leadIds->isEmpty() || $productIds->isEmpty()) {
-            $this->command->warn('No leads or products found. Skipping OrderSeeder.');
+        if ($leads->count() === 0 || $products->count() === 0) {
+            $this->command->info('No leads or products found. Skipping orders seeding.');
             return;
         }
 
-        foreach (range(1, 30) as $i) {
-            DB::table('orders')->insert([
-                'lead_id' => $faker->randomElement($leadIds),
-                'productId' => $faker->randomElement($productIds),
-                'qty' => $faker->numberBetween(1, 10),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+        foreach ($leads as $lead) {
+            $numProducts = rand(1, min(5, $products->count())); // <- fixed
+            $selectedProducts = $products->random($numProducts);
+
+            foreach ($selectedProducts as $product) {
+                Order::create([
+                    'lead_id'   => $lead->id,
+                    'productId' => $product->id,
+                    'qty'       => rand(1, 10),
+                    'status'    => ['pending', 'approved', 'rejected'][array_rand(['pending', 'approved', 'rejected'])],
+                ]);
+            }
         }
     }
 }

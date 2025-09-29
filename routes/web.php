@@ -67,7 +67,7 @@ Route::middleware('auth:admin')->group(function () {
         Route::post('/payments', [PaymentController::class, 'store'])->name('payments.store');
 
         
-        Route::get('/leads', [LeadController::class, 'leadsfatch'])->name('lead.fatch.web');
+        Route::get('/leads', [LeadController::class, 'leadsfetch'])->name('lead.fatch.web');
 
 
         Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
