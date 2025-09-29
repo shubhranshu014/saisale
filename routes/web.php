@@ -3,17 +3,12 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BankController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\EmployeeDetailsController;
-use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\InventoryController;
-use App\Http\Controllers\LeadController;
-use App\Http\Controllers\LeaveController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SuppliersController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\PayrollController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\LeadController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -38,15 +33,6 @@ Route::middleware('auth:admin')->group(function () {
             Route::put('/{role}', [RoleController::class, 'update'])->name('roles.update');
             Route::delete('/{role}', [RoleController::class, 'destroy'])->name('roles.destroy');
         });
-
-        Route::get('/create/user', [UserController::class, 'userCreateinWeb'])->name('create.user');
-        Route::post('/store/user', [UserController::class, 'userStoreinWeb'])->name('store.user');
-        Route::get('/list/user', [UserController::class, 'userlistinWeb'])->name('list.user');
-
-        Route::get('/list/employee/details', [EmployeeDetailsController::class, 'employeeDtllist'])->name('list.employee.details');
-        Route::get('/add/employee/details', [EmployeeDetailsController::class, 'addemployeeDtl'])->name('add.employee.details');
-        Route::post('/store/employee/details', [EmployeeDetailsController::class, 'storeemployeeDtl'])->name('store.employee.details');
-
         Route::post('/logout', [AuthController::class, 'adminLogout'])->name('admin.logout');
 
         // ajax route
@@ -60,6 +46,7 @@ Route::middleware('auth:admin')->group(function () {
         Route::get('/addproduct', [InventoryController::class, 'addproduct'])->name('product.add');
         Route::post('/store/product', [InventoryController::class, 'storeproduct'])->name('product.store');
         Route::get('/productlist', [InventoryController::class, 'listproduct'])->name('product.list');
+        Route::get('/check-inventory-by-product/{product_id}/{qty}', [InventoryController::class, 'checkByProduct'])->name('inventory.checkby.product');
 
         Route::get('/supplyorder', [InventoryController::class, 'supplyorder'])->name('supply.order');
 
@@ -80,23 +67,11 @@ Route::middleware('auth:admin')->group(function () {
         Route::get('/payments/create', [PaymentController::class, 'create'])->name('payments.create');
         Route::post('/payments', [PaymentController::class, 'store'])->name('payments.store');
 
-        Route::get('/leads', [LeadController::class, 'leadsfatch'])->name('lead.fatch.web');
+        
+        Route::get('/leads', [LeadController::class, 'leadsfetch'])->name('lead.fatch.web');
+
 
         Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 
-        // hrms system
-
-        Route::get('/holiday/list', [HolidayController::class, 'index'])->name('holiday.list');
-        Route::get('/holiday/create', [HolidayController::class, 'create'])->name('holiday.create');
-        Route::post('/holiday/store', [HolidayController::class, 'store'])->name('holiday.store');
-
-        Route::get('/leave/request/list', [LeaveController::class, 'index'])->name('leave.request.list');
-        Route::get('/apply/leave/request', [LeaveController::class, 'create'])->name('apply.leave.request');
-        Route::post('/apply/leave/request', [LeaveController::class, 'store'])->name('store.leave.request');
-
-
-        Route::get('/payroll/list', [PayrollController::class, 'index'])->name('payroll.list');
-        Route::get('/payroll/create', [PayrollController::class, 'create'])->name('payroll.create');
-        Route::post('/payroll/store', [PayrollController::class, 'store'])->name('payroll.store');
     });
 });

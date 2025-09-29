@@ -549,166 +549,177 @@
                                             </ul>
                                         </div>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link py-1" href="#">Payments</a></li>
-                                    <li class="nav-item"><a class="nav-link py-1" href="#">Receipts</a></li>
-                                    <li class="nav-item"><a class="nav-link py-1" href="#">Reports</a></li>
-                                    <li class="nav-item"><a class="nav-link py-1" href="#">Tax / GST Reports</a>
-                                    </li>
-                                </ul>
-                            </div>
+                                    <ul class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link py-1 d-flex align-items-center" href="#">
+                                                <i class="bi bi-cart-check me-2"></i> Purchase
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link py-1 d-flex align-items-center" href="#">
+                                                <i class="bi bi-bag-check me-2"></i> Sale
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link py-1 d-flex align-items-center" href="#">
+                                                <i class="bi bi-arrow-return-left me-2"></i> Credit Note
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link py-1 d-flex align-items-center" href="#">
+                                                <i class="bi bi-arrow-return-right me-2"></i> Debit Note
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link py-1 d-flex align-items-center" href="#">
+                                                <i class="bi bi-cash-coin me-2"></i> Payment
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link py-1 d-flex align-items-center" href="#">
+                                                <i class="bi bi-wallet2 me-2"></i> Receive
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link py-1 d-flex align-items-center" href="#">
+                                                <i class="bi bi-arrow-left-right me-2"></i> Contra
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link py-1 d-flex align-items-center" href="#">
+                                                <i class="bi bi-journal-text me-2"></i> Journal
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link py-1 d-flex align-items-center" href="#">
+                                                <i class="bi bi-file-earmark-bar-graph me-2"></i> Tax / GST Reports
+                                            </a>
+                                        </li>
+                                    </ul>
+
                         </li>
-                    @endrole
+                    </ul>
+            </div>
+            </li>
+        @endrole
 
-                    {{-- CRM --}}
-                    @role('admin|sales')
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center justify-content-between"
-                                data-bs-toggle="collapse" href="#crmMenu">
-                                <span class="d-flex align-items-center">
-                                    <i class="bi bi-people fs-5 me-2"></i>
-                                    <span class="menu-title fw-semibold">CRM</span>
-                                </span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                            <div class="collapse" id="crmMenu">
-                                <ul class="nav flex-column ms-4 mt-1 mb-0">
-                                    <li class="nav-item"><a class="nav-link py-1" href="#">Customers</a></li>
-                                    <li class="nav-item"><a class="nav-link py-1"
-                                            href="{{ route('lead.fatch.web') }}">Leads</a></li>
-                                    <li class="nav-item"><a class="nav-link py-1" href="#">Follow-ups</a></li>
-                                </ul>
-                            </div>
+        {{-- CRM --}}
+        @role('admin|sales')
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center justify-content-between" data-bs-toggle="collapse"
+                    href="#crmMenu">
+                    <span class="d-flex align-items-center">
+                        <i class="bi bi-people fs-5 me-2"></i>
+                        <span class="menu-title fw-semibold">CRM</span>
+                    </span>
+                    <i class="bi bi-chevron-down"></i>
+                </a>
+                <div class="collapse" id="crmMenu">
+                    <ul class="nav flex-column ms-4 mt-1 mb-0">
+                        <li class="nav-item"><a class="nav-link py-1" href="#">Customers</a></li>
+                        <li class="nav-item"><a class="nav-link py-1" href="{{ route('lead.fatch.web') }}">Leads</a>
                         </li>
-                    @endrole
-
-                    {{-- HRMS --}}
-                    @role('admin|hr')
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center justify-content-between"
-                                data-bs-toggle="collapse" href="#hrMenu">
-                                <span class="d-flex align-items-center">
-                                    <i class="bi bi-person-badge fs-5 me-2"></i>
-                                    <span class="menu-title fw-semibold">HRMS</span>
-                                </span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                            <div class="collapse" id="hrMenu">
-                                <ul class="nav flex-column ms-4 mt-1 mb-0">
-                                    <li class="nav-item"><a class="nav-link py-1"
-                                            href="{{ route('list.employee.details') }}">Employees</a></li>
-                                    <li class="nav-item"><a class="nav-link py-1" href="#">Attendance</a></li>
-                                    <li class="nav-item"><a class="nav-link py-1" href="#">Payroll</a></li>
-                                    <li class="nav-item"><a class="nav-link py-1"
-                                            href="{{ route('holiday.create') }}">Add Holidays</a></li>
-                                    <li class="nav-item"><a class="nav-link py-1"
-                                            href="{{ route('holiday.list') }}">Holidays</a>
-                                    </li>
-                                    <li class="nav-item"><a class="nav-link py-1"
-                                            href="{{ route('leave.request.list') }}">Leave
-                                            Requests</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    @endrole
-                    <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center justify-content-between"
-                            data-bs-toggle="collapse" href="#leaveMenu">
-                            <span class="d-flex align-items-center">
-                                <i class="bi bi-person-badge fs-5 me-2"></i>
-                                <span class="menu-title fw-semibold">Leaves</span>
-                            </span>
-                            <i class="bi bi-chevron-down"></i>
-                        </a>
-                        <div class="collapse" id="leaveMenu">
-                            <ul class="nav flex-column ms-4 mt-1 mb-0">
-                                <li class="nav-item"><a class="nav-link py-1"
-                                        href="{{ route('holiday.list') }}">Holidays</a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link py-1"
-                                        href="{{ route('apply.leave.request') }}">Apply Leave</a></li>
-                                <li class="nav-item"><a class="nav-link py-1"
-                                        href="{{ route('leave.request.list') }}">Leave
-                                        Requests</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    @role('admin')
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center justify-content-between"
-                                data-bs-toggle="collapse" href="#usermenu">
-                                <span class="d-flex align-items-center">
-                                    <i class="bi bi-person-badge fs-5 me-2"></i>
-                                    <span class="menu-title fw-semibold">User Management</span>
-                                </span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                            <div class="collapse" id="usermenu">
-                                <ul class="nav flex-column ms-4 mt-1 mb-0">
-                                    <li class="nav-item">
-                                        <a class="nav-link py-1" href="{{ route('list.user') }}">User</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link py-1" href="{{ route('roles.index') }}">Roles</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link py-1" href="{{ route('roles.create') }}">Create Role</a>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </li>
-                    @endrole
-
-                    {{-- Settings / Admin --}}
-                    @role('admin')
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center justify-content-between"
-                                data-bs-toggle="collapse" href="#settingsMenu">
-                                <span class="d-flex align-items-center">
-                                    <i class="bi bi-gear-fill fs-5 me-2"></i>
-                                    <span class="menu-title fw-semibold">Settings</span>
-                                </span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                            <div class="collapse" id="settingsMenu">
-                                <ul class="nav flex-column ms-4 mt-1 mb-0">
-                                    <li class="nav-item"><a class="nav-link py-1" href="#">General Settings</a>
-                                    </li>
-
-                                    <li class="nav-item"><a class="nav-link py-1" href="#">Profile</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    @endrole
-
-                </ul>
-            </nav>
-
-            <!-- Main Panel -->
-            <div class="main-panel">
-                <div class="content-wrapper">
-                    @yield('content')
+                        <li class="nav-item"><a class="nav-link py-1" href="#">Follow-ups</a></li>
+                    </ul>
                 </div>
+            </li>
+        @endrole
 
-                <!-- Footer -->
-                <footer class="footer mt-1">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-sm-flex justify-content-center justify-content-sm-between">
-                                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">
-                                    Copyright © 2025
-                                    <a href="https:/ijentech.com/" class="text-muted" target="_blank">iJENTECH</a>.
-                                    All rights reserved.
-                                </span>
-                                <!--<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center text-muted">-->
-                                <!--    Hand-crafted & made with <i class="typcn typcn-heart-full-outline text-danger"></i>-->
-                                <!--</span>-->
-                            </div>
+        {{-- HRMS --}}
+        @role('admin|hr')
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center justify-content-between" data-bs-toggle="collapse"
+                    href="#hrMenu">
+                    <span class="d-flex align-items-center">
+                        <i class="bi bi-person-badge fs-5 me-2"></i>
+                        <span class="menu-title fw-semibold">HRMS</span>
+                    </span>
+                    <i class="bi bi-chevron-down"></i>
+                </a>
+                <div class="collapse" id="hrMenu">
+                    <ul class="nav flex-column ms-4 mt-1 mb-0">
+                        <li class="nav-item"><a class="nav-link py-1" href="#">Employees</a></li>
+                        <li class="nav-item"><a class="nav-link py-1" href="#">Attendance</a></li>
+                        <li class="nav-item"><a class="nav-link py-1" href="#">Payroll</a></li>
+                        <li class="nav-item"><a class="nav-link py-1" href="#">Leave Requests</a></li>
+                    </ul>
+                </div>
+            </li>
+        @endrole
+        @role('admin')
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center justify-content-between" data-bs-toggle="collapse"
+                    href="#usermenu">
+                    <span class="d-flex align-items-center">
+                        <i class="bi bi-person-badge fs-5 me-2"></i>
+                        <span class="menu-title fw-semibold">User Management</span>
+                    </span>
+                    <i class="bi bi-chevron-down"></i>
+                </a>
+                <div class="collapse" id="usermenu">
+                    <ul class="nav flex-column ms-4 mt-1 mb-0">
+                        <li class="nav-item">
+                            <a class="nav-link py-1" href="{{ route('roles.index') }}">Roles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link py-1" href="{{ route('roles.create') }}">Create Role</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
+        @endrole
+
+        {{-- Settings / Admin --}}
+        @role('admin')
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center justify-content-between" data-bs-toggle="collapse"
+                    href="#settingsMenu">
+                    <span class="d-flex align-items-center">
+                        <i class="bi bi-gear-fill fs-5 me-2"></i>
+                        <span class="menu-title fw-semibold">Settings</span>
+                    </span>
+                    <i class="bi bi-chevron-down"></i>
+                </a>
+                <div class="collapse" id="settingsMenu">
+                    <ul class="nav flex-column ms-4 mt-1 mb-0">
+                        <li class="nav-item"><a class="nav-link py-1" href="#">General Settings</a>
+                        </li>
+
+                        <li class="nav-item"><a class="nav-link py-1" href="#">Profile</a></li>
+                    </ul>
+                </div>
+            </li>
+        @endrole
+
+        </ul>
+        </nav>
+
+        <!-- Main Panel -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                @yield('content')
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer mt-1">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">
+                                Copyright © 2025
+                                <a href="https:/ijentech.com/" class="text-muted" target="_blank">iJENTECH</a>.
+                                All rights reserved.
+                            </span>
+                            <!--<span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center text-muted">-->
+                            <!--    Hand-crafted & made with <i class="typcn typcn-heart-full-outline text-danger"></i>-->
+                            <!--</span>-->
                         </div>
                     </div>
-                </footer>
-            </div>
+                </div>
+            </footer>
         </div>
+    </div>
     </div>
 
     <!-- JS Files -->

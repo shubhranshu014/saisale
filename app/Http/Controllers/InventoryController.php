@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Productcode;
 use App\Models\Product;
 use Illuminate\Http\Request;
+// use App\Models\
 
 class InventoryController extends Controller
 {
@@ -120,4 +121,9 @@ class InventoryController extends Controller
     {
         return view('inventory.supplyorder');
     }
+
+    public function checkByProduct($product_id,$qty){
+
+    }
+    
 }
